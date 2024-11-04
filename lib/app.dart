@@ -3,6 +3,7 @@ import 'package:provider/provider.dart'; // Make sure to add provider to your pu
 import 'package:tickoyakovendors/core/theme/app_theme.dart'; // Assuming your AppTheme is in core/theme/app_theme.dart
 import 'package:tickoyakovendors/core/theme/theme_controller.dart';
 import 'package:tickoyakovendors/features/auth/presentation/pages/splash_screen.dart';
+import 'package:tickoyakovendors/features/home_screen/presentation/pages/home_screen.dart';
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -18,7 +19,7 @@ class App extends StatelessWidget {
             theme: AppTheme.lightTheme, // Light theme
             darkTheme: AppTheme.darkTheme, // Dark theme
             themeMode: themeController.themeMode, // Set the theme mode
-            home: const SplashScreen(), // Your app's home screen
+            home: const HomeScreen(), // Your app's home screen
           );
         },
       ),

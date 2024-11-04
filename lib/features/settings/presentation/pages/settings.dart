@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
+import 'package:tickoyakovendors/core/strings.dart';
+import 'package:tickoyakovendors/features/home_screen/presentation/widgets/custom_drawer_widget.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class SettingsScreen extends StatefulWidget {
+  const SettingsScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _SettingsScreenState extends State<SettingsScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: const CustomDrawer(),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -24,37 +30,20 @@ class _HomeScreenState extends State<HomeScreen> {
               titlePadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ShaderMask(
-                    shaderCallback: (bounds) => LinearGradient(
+                    shaderCallback: (bounds) => const LinearGradient(
                       colors: [
                         AppColors.accentColor,
                         Colors.white,
                       ],
                     ).createShader(bounds),
                     child: const Text(
-                      'TickoYako',
+                      settings,
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 2,
-                      ),
-                    ),
-                    child: const CircleAvatar(
-                      radius: 18,
-                      backgroundColor: Colors.white24,
-                      child: Icon(
-                        Icons.person,
                         color: Colors.white,
                       ),
                     ),
@@ -104,27 +93,31 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             leading: IconButton(
-              icon: const Icon(Icons.menu, color: Colors.white),
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.white,
+                size: 35,
+              ),
               onPressed: () {
-                // Add drawer functionality here
+                _scaffoldKey.currentState?.openDrawer();
               },
             ),
           ),
           // Add your main content here using other Sliver widgets
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Welcome Back!',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16),
                   // Add your content here
                 ],
               ),
@@ -132,66 +125,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add your action here
-        },
-        backgroundColor: AppColors.primaryColor,
-        child: Container(
-          width: 60,
-          height: 60,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                AppColors.primaryColor,
-                AppColors.secondaryColor,
-              ],
-            ),
-          ),
-          child: const Icon(
-            Icons.add,
-            color: Colors.white,
-          ),
-        ),
-      ),
     );
   }
-}
-
-// Optional: Create a custom clipper for more complex background shapes
-class CustomShapeClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-    path.lineTo(0, size.height - 50);
-
-    var firstControlPoint = Offset(size.width / 4, size.height);
-    var firstEndPoint = Offset(size.width / 2, size.height - 30);
-    path.quadraticBezierTo(
-      firstControlPoint.dx,
-      firstControlPoint.dy,
-      firstEndPoint.dx,
-      firstEndPoint.dy,
-    );
-
-    var secondControlPoint =
-        Offset(size.width - (size.width / 4), size.height - 80);
-    var secondEndPoint = Offset(size.width, size.height - 40);
-    path.quadraticBezierTo(
-      secondControlPoint.dx,
-      secondControlPoint.dy,
-      secondEndPoint.dx,
-      secondEndPoint.dy,
-    );
-
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
