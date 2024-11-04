@@ -66,3 +66,5 @@ const qr_scanner= 'QR Scanner';
 const settings = 'Settings';
 const analytics = 'Analytics';
 const dashboard = 'Dashboard';
+const no_events= 'No events to display...';
+const events_txt='Your Events';

@@ -1,8 +1,6 @@
 part of 'events_bloc.dart';
 
-abstract class EventsEvent extends Equatable {
-  const EventsEvent();
+abstract class EventsEvent {}
 
-  @override
-  List<Object> get props => [];
-}
+class FetchEvents extends EventsEvent {}
+

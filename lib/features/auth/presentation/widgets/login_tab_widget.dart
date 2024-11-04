@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
 import 'package:tickoyakovendors/core/strings.dart';
-import 'package:tickoyakovendors/features/events/presentation/pages/home_screen.dart';
-
+import 'package:tickoyakovendors/features/home_screen/presentation/pages/home_screen.dart';
 class LoginTab extends StatefulWidget {
   const LoginTab({Key? key}) : super(key: key);
 
@@ -130,7 +129,7 @@ class _LoginTabState extends State<LoginTab> {
                                 PageRouteBuilder(
                                   pageBuilder: (context, animation,
                                           secondaryAnimation) =>
-                                      const HomeScreen(), // Your destination screen
+                                      const HomeScreen(), 
                                   transitionsBuilder: (context, animation,
                                       secondaryAnimation, child) {
                                     return FadeTransition(
