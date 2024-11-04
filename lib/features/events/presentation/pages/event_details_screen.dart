@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
 import 'package:tickoyakovendors/core/commons/bg-widget.dart';
 import 'package:tickoyakovendors/features/events/data/models/event_model.dart';
+import 'package:tickoyakovendors/features/ticket_scanning/presentation/pages/ticket_scanning.dart';
 
 class EventDetailsScreen extends StatefulWidget {
   final EventsModel event;
@@ -50,7 +51,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                 child: Container(
                   decoration:  BoxDecoration(
                     color: Colors.white.withOpacity(.6),
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                    borderRadius:const BorderRadius.vertical(top: Radius.circular(30)),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
@@ -154,7 +155,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                           ),
                         ),
                       
-                    
+                   const SizedBox(height: 10,),
                         Container(
                              decoration: BoxDecoration(
                             color: Colors.transparent,
@@ -193,6 +194,23 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                             ),
                           ),
                         ),
+                          const SizedBox(
+                          height: 10,
+                        ),
+                        Row(mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 50,
+                              width: 250,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: AppColors.primaryColor
+                              ),
+                              child:const Center(child: Text('Seat map',style: TextStyle(color: AppColors.cardColor,),),),
+                            ),
+                          ],
+                        ),
+                       const SizedBox(height: 100,)
                     
                       ],
                     ),
@@ -205,7 +223,9 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // TODO: Implement booking logic
+           // Add logout logic
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) =>const TicketScanningScreen()));
         },
         backgroundColor: AppColors.primaryColor,
         icon: const Icon(Icons.qr_code),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
-import 'package:tickoyakovendors/core/strings.dart';
+import 'package:tickoyakovendors/core/commons/bg-widget.dart';
 import 'package:tickoyakovendors/features/home_screen/presentation/widgets/custom_drawer_widget.dart';
+import 'package:tickoyakovendors/features/profile/presentation/widgets/logout_button_widget.dart';
+import 'package:tickoyakovendors/features/profile/presentation/widgets/option_widget.dart';
+import 'package:tickoyakovendors/features/profile/presentation/widgets/static_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -16,114 +19,103 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: Colors.grey.shade200,
       key: _scaffoldKey,
       drawer: const CustomDrawer(),
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            expandedHeight: 120.0,
-            floating: false,
-            pinned: true,
-            stretch: true,
-            backgroundColor: AppColors.primaryColor,
-            flexibleSpace: FlexibleSpaceBar(
-              titlePadding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ShaderMask(
-                    shaderCallback: (bounds) => const LinearGradient(
-                      colors: [
-                        AppColors.accentColor,
-                        Colors.white,
-                      ],
-                    ).createShader(bounds),
-                    child: const Text(
-                      profile,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+      body: AnimatedBackgroundWidget(
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              expandedHeight: 200.0,
+              floating: false,
+              pinned: true,
+              stretch: true,
+              backgroundColor: AppColors.primaryColor,
+              flexibleSpace: FlexibleSpaceBar(
+                titlePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                title: ShaderMask(
+                  shaderCallback: (bounds) => const LinearGradient(
+                    colors: [AppColors.accentColor, Colors.white],
+                  ).createShader(bounds),
+                  child: const Text(
+                    "Profile",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
-                ],
-              ),
-              background: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      AppColors.primaryColor,
-                      AppColors.primaryColor.withOpacity(0.8),
-                      AppColors.secondaryColor,
+                ),
+                background: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        AppColors.primaryColor,
+                        AppColors.secondaryColor,
+                      ],
+                    ),
+                  ),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 40,
+                            backgroundColor: Colors.white,
+                            backgroundImage: AssetImage('assets/profile_placeholder.png'),
+                          ),
+                          SizedBox(width: 16),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "John Doe",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                "john.doe@example.com",
+                                style: TextStyle(color: Colors.white70),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 16),
                     ],
                   ),
                 ),
-                child: Stack(
+              ),
+              leading: IconButton(
+                icon: const Icon(Icons.menu, color: Colors.white, size: 30),
+                onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
                   children: [
-                    Positioned(
-                      top: -30,
-                      right: -30,
-                      child: Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white.withOpacity(0.1),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: -20,
-                      left: -20,
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white.withOpacity(0.1),
-                        ),
-                      ),
-                    ),
+                    ProfileStatisticsSection(),
+                    const SizedBox(height: 24),
+                    ProfileOptionsSection(),
+                    const SizedBox(height: 200),
+                    const LogOutButton()
+                    
                   ],
                 ),
               ),
             ),
-            leading: IconButton(
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.white,
-                size: 35,
-              ),
-              onPressed: () {
-                _scaffoldKey.currentState?.openDrawer();
-              },
-            ),
-          ),
-          // Add your main content here using other Sliver widgets
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Welcome Back!',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  // Add your content here
-                ],
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

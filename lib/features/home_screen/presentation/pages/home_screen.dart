@@ -3,19 +3,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tickoyakovendors/core/colors.dart';
 import 'package:tickoyakovendors/core/commons/bg-widget.dart';
 import 'package:tickoyakovendors/core/strings.dart';
+import 'package:tickoyakovendors/features/events/data/repositories/events_repository.dart';
 import 'package:tickoyakovendors/features/events/presentation/bloc/events_bloc.dart';
 import 'package:tickoyakovendors/features/events/presentation/pages/event_list.dart';
+import 'package:tickoyakovendors/features/events/presentation/widgets/add_event_dialog_widget.dart';
 import 'package:tickoyakovendors/features/events/presentation/widgets/custom_fab_widget.dart';
 import 'package:tickoyakovendors/features/home_screen/presentation/widgets/custom_drawer_widget.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  
+   HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+   final _eventsRepository = EventsRepository();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -175,9 +179,17 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: CustomFAB(
-        onPressed: () {
-          // TODO: Add navigation to create event screen
-        },
+        repository: _eventsRepository,
+    onPressed: () async {
+        final result = await showDialog<Map<String, dynamic>>(
+          context: context,
+          builder: (BuildContext context) => const AddEventDialog(),
+        );
+
+        if (result != null) {
+          // Use the event object
+        }
+      }
       ),
     );
   }
