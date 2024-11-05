@@ -30,7 +30,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               floating: false,
               pinned: true,
               stretch: true,
-              backgroundColor: AppColors.primaryColor,
               flexibleSpace: FlexibleSpaceBar(
                 titlePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 title: ShaderMask(
@@ -58,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(60.0),
+                    padding: const EdgeInsets.all(50.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -86,23 +85,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             const SizedBox(width: 16),
-                            const Column(
+                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  "John Doe",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Text(
-                                  "john.doe@example.com",
-                                  style: TextStyle(color: Colors.white70),
-                                ),
-                              ],
+                              const Text(
+              'alfred bryann',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          
+          const SizedBox(height: 4),
+          Text(
+          'nduko@gmail.com',
+            style: TextStyle(
+              color: Colors.white.withOpacity(0.8),
+              fontSize: 14,
+            ),
+          ),
+
+                              ]
                             ),
                           ],
                         ),
@@ -116,6 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onPressed: () => _scaffoldKey.currentState?.openDrawer(),
               ),
             ),
+            
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -136,3 +142,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
+

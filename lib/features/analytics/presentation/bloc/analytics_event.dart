@@ -1,8 +1,6 @@
 part of 'analytics_bloc.dart';
 
-abstract class AnalyticsEvent extends Equatable {
-  const AnalyticsEvent();
+// analytics_event.dart
+abstract class AnalyticsEvent {}
 
-  @override
-  List<Object> get props => [];
-}
+class FetchAnalyticsData extends AnalyticsEvent {}

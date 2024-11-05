@@ -3,20 +3,20 @@ import '../models/event_model.dart';
 class EventsRepository {
   // Static list to maintain events in memory
   static final List<EventsModel> _events = [
-    // EventsModel(
-    //   id: '1',
-    //   contact: '+1234567890',
-    //   eventOwner: 'John Doe',
-    //   price: 50,
-    //   type: 'Concert',
-    //   venue: 'Central Park',
-    //   imgUrl:
-    //       'https://img.freepik.com/free-vector/abstract-music-festival-poster-template_23-2148233165.jpg?semt=ais_hybrid',
-    //   title: 'Summer Music Festival',
-    //   description:
-    //       'Like The Conjuring, Annabelle is based on one of the famous cases taken on by paranormal investigators Ed and Lorraine Warren',
-    //   date: DateTime.now().add(const Duration(days: 7)),
-    // ),
+    EventsModel(
+      id: '1',
+      contact: '+1234567890',
+      eventOwner: 'John Doe',
+      price: 50,
+      type: 'Concert',
+      venue: 'Central Park',
+      imgUrl:
+          'https://img.freepik.com/free-vector/abstract-music-festival-poster-template_23-2148233165.jpg?semt=ais_hybrid',
+      title: 'Summer Music Festival',
+      description:
+          'Like The Conjuring, Annabelle is based on one of the famous cases taken on by paranormal investigators Ed and Lorraine Warren',
+      date: DateTime.now().add(const Duration(days: 7)),
+    ),
    
   ];
 

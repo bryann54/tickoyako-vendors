@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
 import 'package:tickoyakovendors/core/commons/bg-widget.dart';
 import 'package:tickoyakovendors/features/events/data/models/event_model.dart';
+import 'package:tickoyakovendors/features/events/presentation/pages/seat_selection.dart';
 import 'package:tickoyakovendors/features/ticket_scanning/presentation/pages/ticket_scanning.dart';
 
 class EventDetailsScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Colors.grey.shade200,
+ 
       body: AnimatedBackgroundWidget(
         child: CustomScrollView(
           slivers: [
@@ -46,7 +47,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
               backgroundColor: AppColors.primaryColor,
               leading: IconButton(
                 icon: const CircleAvatar(
-                  backgroundColor: Colors.white,
+                  backgroundColor: AppColors.cardColor,
                   child: Icon(Icons.arrow_back, color: AppColors.primaryColor),
                 ),
                 onPressed: () => Navigator.pop(context),
@@ -57,7 +58,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                 offset: const Offset(0, -30),
                 child: Container(
                   decoration:  BoxDecoration(
-                    color: Colors.white.withOpacity(.6),
+                    color: Colors.white.withOpacity(.5),
                     borderRadius:const BorderRadius.vertical(top: Radius.circular(30)),
                   ),
                   child: Padding(
@@ -198,7 +199,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                                 Text(
                                   widget.event.description,
                                   style: TextStyle(
-                                    color: Colors.grey[600],
+                                    color: Colors.grey[900],
                                     height: 1.5,
                                     fontSize: 16,
                                   ),
@@ -213,14 +214,26 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                         ),
                         Row(mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              height: 50,
-                              width: 250,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: AppColors.primaryColor
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                 MaterialPageRoute(
+                                    builder: (_) =>
+                                        SeatSelectionScreen(event:widget.event
+                                        ,),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                height: 50,
+                                width: 250,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: AppColors.primaryColor
+                                ),
+                                child:const Center(child: Text('Seat map',style: TextStyle(color: AppColors.cardColor,),),),
                               ),
-                              child:const Center(child: Text('Seat map',style: TextStyle(color: AppColors.cardColor,),),),
                             ),
                           ],
                         ),
@@ -272,15 +285,16 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                 Text(
                   title,
                   style: TextStyle(
-                    color: Colors.grey[600],
+                    color: Colors.grey[800],
                     fontSize: 14,
                   ),
                 ),
                 Text(
                   value,
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style:  TextStyle(
+                    fontSize: 17,
                     fontWeight: FontWeight.w500,
+                     color: Colors.grey[900],
                   ),
                 ),
               ],

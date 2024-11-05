@@ -1,7 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
 import 'package:tickoyakovendors/core/strings.dart';
-import 'package:tickoyakovendors/features/analytics/presentation/pages/analytics.dart';
+import 'package:tickoyakovendors/features/analytics/presentation/pages/analytics_screen.dart';
 import 'package:tickoyakovendors/features/home_screen/presentation/pages/home_screen.dart';
 import 'package:tickoyakovendors/features/profile/presentation/pages/profile_screen.dart';
 import 'package:tickoyakovendors/features/profile/presentation/widgets/logout_button_widget.dart';
@@ -96,15 +97,23 @@ class CustomDrawer extends StatelessWidget {
                 width: 2,
               ),
             ),
-            child: const CircleAvatar(
-              radius: 40,
-              backgroundColor: Colors.white24,
-              child: Icon(
-                Icons.person,
-                size: 40,
-                color: Colors.white,
+           child: CircleAvatar(
+              radius: 80, 
+              backgroundImage: const CachedNetworkImageProvider(
+                'https://picsum.photos/200/300',
               ),
+              backgroundColor:
+                  Colors.grey,
+              onBackgroundImageError: (error, stackTrace) {
+                
+                 const Icon(
+                  Icons.person,
+                  size: 40,
+                  color: Colors.white,
+                );
+              },
             ),
+
           ),
           const SizedBox(height: 12),
           ShaderMask(
@@ -115,7 +124,7 @@ class CustomDrawer extends StatelessWidget {
               ],
             ).createShader(bounds),
             child: const Text(
-              'Vendor Name',
+              'alfred bryann',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
@@ -125,7 +134,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            'vendor@email.com',
+          'nduko@gmail.com',
             style: TextStyle(
               color: Colors.white.withOpacity(0.8),
               fontSize: 14,
@@ -157,7 +166,7 @@ class CustomDrawer extends StatelessWidget {
          onTap: () {
             // Add logout logic
             Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => ProfileScreen()));
+                context, MaterialPageRoute(builder: (_) => const ProfileScreen()));
           },
         ),
         _buildDivider(),
@@ -168,7 +177,7 @@ class CustomDrawer extends StatelessWidget {
          onTap: () {
             // Add logout logic
             Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => AnalyticsScreen()));
+                context, MaterialPageRoute(builder: (_) => const AnalyticsScreen()));
           },
         ),
         _buildDivider(),
@@ -195,7 +204,7 @@ class CustomDrawer extends StatelessWidget {
           onTap: () {
             // Add logout logic
             Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => SettingsScreen()));
+                context, MaterialPageRoute(builder: (_) => const SettingsScreen()));
           },
         ),
       ],
@@ -257,7 +266,7 @@ class CustomDrawer extends StatelessWidget {
       ),
       child: Column(
         children: [
-        LogOutButton(),
+        const LogOutButton(),
           const SizedBox(height: 8),
           Text(
             version_txt,

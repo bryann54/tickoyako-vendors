@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tickoyakovendors/core/theme/app_theme.dart';
 import 'package:tickoyakovendors/core/theme/theme_controller.dart';
+import 'package:tickoyakovendors/features/analytics/data/repositories/analytics_repository.dart';
+import 'package:tickoyakovendors/features/analytics/presentation/bloc/analytics_bloc.dart';
 import 'package:tickoyakovendors/features/events/data/repositories/events_repository.dart';
 import 'package:tickoyakovendors/features/events/presentation/bloc/events_bloc.dart';
 import 'package:tickoyakovendors/features/home_screen/presentation/pages/home_screen.dart';
@@ -19,6 +21,11 @@ class App extends StatelessWidget {
             EventsRepository(),
           ),
         ),
+         BlocProvider(
+          create: (context) => AnalyticsBloc(
+            repository: AnalyticsRepositoryImpl(),
+          ),
+        )
       
       ],
       child: ChangeNotifierProvider(
@@ -39,3 +46,4 @@ class App extends StatelessWidget {
     );
   }
 }
+

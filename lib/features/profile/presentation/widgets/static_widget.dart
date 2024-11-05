@@ -17,10 +17,26 @@ class ProfileStatisticsSection extends StatelessWidget {
               label: "Scanned Tickets",
               count: "123",
             ),
+             Container(
+              height: 80,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: VerticalDivider(
+                color: Colors.grey[200],
+                thickness: 2.0,
+              ),
+            ),
             ProfileStatisticItem(
               icon: Icons.event,
               label: "Events Attended",
               count: "5",
+            ),
+             Container(
+              height: 80,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: VerticalDivider(
+                color: Colors.grey[200],
+                thickness: 2.0,
+              ),
             ),
             ProfileStatisticItem(
               icon: Icons.star,

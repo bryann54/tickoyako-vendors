@@ -60,11 +60,12 @@ class _AddEventDialogState extends State<AddEventDialog> {
 
   InputDecoration _getInputDecoration(String label) {
     return InputDecoration(
+    
       labelText: label,
       labelStyle: const TextStyle(color: Colors.black87),
       border: const OutlineInputBorder(),
       filled: true,
-      fillColor: Colors.white.withOpacity(0.9),
+      fillColor: Colors.grey.withOpacity(0.4),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.grey.shade400),
       ),
@@ -77,11 +78,9 @@ class _AddEventDialogState extends State<AddEventDialog> {
 @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: Colors.transparent,
       insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade500,
           borderRadius: BorderRadius.circular(8),
         ),
         child: AnimatedBackgroundWidget(
@@ -98,15 +97,25 @@ class _AddEventDialogState extends State<AddEventDialog> {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'Create New Event',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
-                            ),
+                          Row(mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ShaderMask(
+                                shaderCallback: (bounds) =>
+                                    const LinearGradient(
+                                  colors: [AppColors.accentColor, Colors.white],
+                                ).createShader(bounds),
+                                child:  Text(
+                                  "Create event".toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(height: 24),
+                          // const SizedBox(height: 24),
                           TextFormField(
                             controller: _titleController,
                             decoration: _getInputDecoration('Event Title'),
@@ -114,11 +123,11 @@ class _AddEventDialogState extends State<AddEventDialog> {
                                 ? 'Title is required'
                                 : null,
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 12),
                           DropdownButtonFormField<String>(
                             value: _selectedType,
                             decoration: _getInputDecoration('Event Type'),
-                            dropdownColor: Colors.white,
+                            dropdownColor: Colors.grey.withOpacity(0.4),
                             items: _eventTypes
                                 .map((type) => DropdownMenuItem(
                                       value: type,
@@ -134,7 +143,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                                 ? 'Please select an event type'
                                 : null,
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 12),
                           TextFormField(
                             controller: _imageUrlController,
                             decoration: _getInputDecoration('Image URL'),
@@ -142,7 +151,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                                 ? 'Image URL is required'
                                 : null,
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 12),
                           TextFormField(
                             controller: _venueController,
                             decoration: _getInputDecoration('Venue'),
@@ -150,7 +159,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                                 ? 'Venue is required'
                                 : null,
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 12),
                           TextFormField(
                             controller: _descriptionController,
                             decoration: _getInputDecoration('Description'),
@@ -159,10 +168,10 @@ class _AddEventDialogState extends State<AddEventDialog> {
                                 ? 'Description is required'
                                 : null,
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 12),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.9),
+                              color:Colors.grey.withOpacity(0.4),
                               borderRadius: BorderRadius.circular(14),
                               border: Border.all(color: Colors.grey.shade400),
                             ),
@@ -175,7 +184,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                               onTap: () => _selectDate(context),
                             ),
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 12),
                           TextFormField(
                             controller: _priceController,
                             decoration: _getInputDecoration('Price').copyWith(
@@ -192,7 +201,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                               return null;
                             },
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 12),
                           TextFormField(
                             controller: _eventOwnerController,
                             decoration: _getInputDecoration('Event Owner'),
@@ -200,7 +209,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                                 ? 'Event owner is required'
                                 : null,
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 12),
                           TextFormField(
                             controller: _contactController,
                             decoration: _getInputDecoration('Contact'),
@@ -223,7 +232,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(),
                       style: TextButton.styleFrom(
-                        backgroundColor: Colors.white.withOpacity(0.9),
+                        backgroundColor: Colors.grey.withOpacity(0.4),
                       ),
                       child: const Text('Cancel',style: TextStyle(color:AppColors.error),),
                     ),
