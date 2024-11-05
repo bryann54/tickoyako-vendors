@@ -33,9 +33,16 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                   child: Image.network(
                     widget.event.imgUrl,
                     fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(
+                        Icons.error,
+                        size: 40,
+                      );
+                    },
                   ),
                 ),
               ),
+
               backgroundColor: AppColors.primaryColor,
               leading: IconButton(
                 icon: const CircleAvatar(
@@ -99,21 +106,24 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 5),
+                const SizedBox(height: 5),
                         Container(
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          border: Border.all(color: AppColors.backgroundDark.withOpacity(.1)),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                // Left Column
-                                Column(
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            border: Border.all(
+                                color:
+                                    AppColors.backgroundDark.withOpacity(.1)),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              // Left Column
+                              Expanded(
+                                flex: 1,
+                                child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     _buildInfoTile(Icons.location_on, 'Venue',
@@ -126,20 +136,24 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                                         'KES ${widget.event.price}'),
                                   ],
                                 ),
-                                SizedBox(
-                                  height:
-                                      200, 
-                                  child: VerticalDivider(
-                                    color: Colors.grey[
-                                        200], 
-                                    thickness:
-                                        3.0,
-                                    width: 40,
-                                  ),
+                              ),
+
+                              // Divider between columns
+                              Container(
+                                height:
+                                    100, // Adjusted height to fit content without overflow
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: VerticalDivider(
+                                  color: Colors.grey[200],
+                                  thickness: 3.0,
                                 ),
-        
-                                // Right Column
-                                Column(
+                              ),
+
+                              // Right Column
+                              Expanded(
+                                flex: 1,
+                                child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     _buildInfoTile(Icons.phone, 'Contact',
@@ -150,11 +164,11 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                                     const SizedBox(height: 8),
                                   ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                      
+
                    const SizedBox(height: 10,),
                         Container(
                              decoration: BoxDecoration(
@@ -251,24 +265,26 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
             ),
           ),
           const SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: TextStyle(
-                  color: Colors.grey[600],
-                  fontSize: 14,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                    fontSize: 14,
+                  ),
                 ),
-              ),
-              Text(
-                value,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+                Text(
+                  value,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tickoyakovendors/core/theme/theme_controller.dart';
+
 class ThemeToggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

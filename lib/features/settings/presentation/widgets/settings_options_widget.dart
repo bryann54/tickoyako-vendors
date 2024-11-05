@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
 
-class ProfileOptionsSection extends StatelessWidget {
+class SettingsOptionsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-       borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(20),
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.backgroundDark.withOpacity(.1),
@@ -16,18 +16,7 @@ class ProfileOptionsSection extends StatelessWidget {
           children: [
             ProfileOptionItem(
               icon: Icons.person,
-              title: "Edit name",
-              onTap: () {},
-            ),
-           Padding(
-             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-             child: Divider(
-                color: AppColors.dividerColorDark.withOpacity(.3),
-              ),
-           ),
-            ProfileOptionItem(
-              icon: Icons.phone_android_rounded,
-              title: "Edit number",
+              title: "Edit Profile",
               onTap: () {},
             ),
             Padding(
@@ -37,8 +26,19 @@ class ProfileOptionsSection extends StatelessWidget {
               ),
             ),
             ProfileOptionItem(
-              icon: Icons.edit_attributes,
-              title:"Edit Image",
+              icon: Icons.lock,
+              title: "Change Password",
+              onTap: () {},
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Divider(
+                color: AppColors.dividerColorDark.withOpacity(.3),
+              ),
+            ),
+            ProfileOptionItem(
+              icon: Icons.notifications,
+              title: "Notification Settings",
               onTap: () {},
             ),
           ],

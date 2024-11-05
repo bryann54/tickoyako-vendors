@@ -74,7 +74,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
     );
   }
 
-  @override
+@override
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: Colors.transparent,
@@ -85,162 +85,180 @@ class _AddEventDialogState extends State<AddEventDialog> {
           borderRadius: BorderRadius.circular(8),
         ),
         child: AnimatedBackgroundWidget(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Create New Event',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          TextFormField(
+                            controller: _titleController,
+                            decoration: _getInputDecoration('Event Title'),
+                            validator: (value) => value?.isEmpty ?? true
+                                ? 'Title is required'
+                                : null,
+                          ),
+                          const SizedBox(height: 16),
+                          DropdownButtonFormField<String>(
+                            value: _selectedType,
+                            decoration: _getInputDecoration('Event Type'),
+                            dropdownColor: Colors.white,
+                            items: _eventTypes
+                                .map((type) => DropdownMenuItem(
+                                      value: type,
+                                      child: Text(type),
+                                    ))
+                                .toList(),
+                            onChanged: (value) {
+                              setState(() {
+                                _selectedType = value!;
+                              });
+                            },
+                            validator: (value) => value == null
+                                ? 'Please select an event type'
+                                : null,
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            controller: _imageUrlController,
+                            decoration: _getInputDecoration('Image URL'),
+                            validator: (value) => value?.isEmpty ?? true
+                                ? 'Image URL is required'
+                                : null,
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            controller: _venueController,
+                            decoration: _getInputDecoration('Venue'),
+                            validator: (value) => value?.isEmpty ?? true
+                                ? 'Venue is required'
+                                : null,
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            controller: _descriptionController,
+                            decoration: _getInputDecoration('Description'),
+                            maxLines: 3,
+                            validator: (value) => value?.isEmpty ?? true
+                                ? 'Description is required'
+                                : null,
+                          ),
+                          const SizedBox(height: 16),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.9),
+                              borderRadius: BorderRadius.circular(14),
+                              border: Border.all(color: Colors.grey.shade400),
+                            ),
+                            child: ListTile(
+                              title: Text(
+                                'Date: ${_selectedDate.toLocal().toString().split(' ')[0]}',
+                                style: const TextStyle(color: Colors.black87),
+                              ),
+                              trailing: const Icon(Icons.calendar_today),
+                              onTap: () => _selectDate(context),
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            controller: _priceController,
+                            decoration: _getInputDecoration('Price').copyWith(
+                              prefixText: '',
+                            ),
+                            keyboardType: TextInputType.number,
+                            validator: (value) {
+                              if (value?.isEmpty ?? true) {
+                                return 'Price is required';
+                              }
+                              if (int.tryParse(value!) == null) {
+                                return 'Please enter a valid number';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            controller: _eventOwnerController,
+                            decoration: _getInputDecoration('Event Owner'),
+                            validator: (value) => value?.isEmpty ?? true
+                                ? 'Event owner is required'
+                                : null,
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            controller: _contactController,
+                            decoration: _getInputDecoration('Contact'),
+                            validator: (value) => value?.isEmpty ?? true
+                                ? 'Contact is required'
+                                : null,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const Divider(),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const Text(
-                      'Create New Event',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.white.withOpacity(0.9),
                       ),
+                      child: const Text('Cancel',style: TextStyle(color:AppColors.error),),
                     ),
-                    const SizedBox(height: 24),
-                    TextFormField(
-                      controller: _titleController,
-                      decoration: _getInputDecoration('Event Title'),
-                      validator: (value) =>
-                          value?.isEmpty ?? true ? 'Title is required' : null,
-                    ),
-                    const SizedBox(height: 16),
-                    DropdownButtonFormField<String>(
-                      value: _selectedType,
-                      decoration: _getInputDecoration('Event Type'),
-                      dropdownColor: Colors.white,
-                      items: _eventTypes
-                          .map((type) => DropdownMenuItem(
-                                value: type,
-                                child: Text(type),
-                              ))
-                          .toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedType = value!;
-                        });
-                      },
-                      validator: (value) =>
-                          value == null ? 'Please select an event type' : null,
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _imageUrlController,
-                      decoration: _getInputDecoration('Image URL'),
-                      validator: (value) =>
-                          value?.isEmpty ?? true ? 'Image URL is required' : null,
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _venueController,
-                      decoration: _getInputDecoration('Venue'),
-                      validator: (value) =>
-                          value?.isEmpty ?? true ? 'Venue is required' : null,
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _descriptionController,
-                      decoration: _getInputDecoration('Description'),
-                      maxLines: 3,
-                      validator: (value) =>
-                          value?.isEmpty ?? true ? 'Description is required' : null,
-                    ),
-                    const SizedBox(height: 16),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.9),
-                        borderRadius: BorderRadius.circular(14),
-                        border: Border.all(color: Colors.grey.shade400),
-                      ),
-                      child: ListTile(
-                        title: Text(
-                          'Date: ${_selectedDate.toLocal().toString().split(' ')[0]}',
-                          style: const TextStyle(color: Colors.black87),
-                        ),
-                        trailing: const Icon(Icons.calendar_today),
-                        onTap: () => _selectDate(context),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _priceController,
-                      decoration: _getInputDecoration('Price').copyWith(
-                        prefixText: '',
-                      ),
-                      keyboardType: TextInputType.number,
-                      validator: (value) {
-                        if (value?.isEmpty ?? true) {
-                          return 'Price is required';
+                    const SizedBox(width: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          final eventData = {
+                            'type': _selectedType,
+                            'imgUrl': _imageUrlController.text,
+                            'venue': _venueController.text,
+                            'title': _titleController.text,
+                            'description': _descriptionController.text,
+                            'date': _selectedDate.toIso8601String(),
+                            'price': int.parse(_priceController.text),
+                            'eventOwner': _eventOwnerController.text,
+                            'contact': _contactController.text,
+                          };
+                          Navigator.of(context).pop(eventData);
                         }
-                        if (int.tryParse(value!) == null) {
-                          return 'Please enter a valid number';
-                        }
-                        return null;
                       },
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _eventOwnerController,
-                      decoration: _getInputDecoration('Event Owner'),
-                      validator: (value) =>
-                          value?.isEmpty ?? true ? 'Event owner is required' : null,
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _contactController,
-                      decoration: _getInputDecoration('Contact'),
-                      validator: (value) =>
-                          value?.isEmpty ?? true ? 'Contact is required' : null,
-                    ),
-                    const SizedBox(height: 24),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        TextButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          style: TextButton.styleFrom(
-                            backgroundColor: Colors.white.withOpacity(0.9),
-                          ),
-                          child: const Text('Cancel'),
-                        ),
-                        const SizedBox(width: 16),
-                        ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              final eventData = {
-                                'type': _selectedType,
-                                'imgUrl': _imageUrlController.text,
-                                'venue': _venueController.text,
-                                'title': _titleController.text,
-                                'description': _descriptionController.text,
-                                'date': _selectedDate.toIso8601String(),
-                                'price': int.parse(_priceController.text),
-                                'eventOwner': _eventOwnerController.text,
-                                'contact': _contactController.text,
-                              };
-                              Navigator.of(context).pop(eventData);
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primaryColor,
-                          ),
-                          child: const Text('Create Event'),
-                        ),
-                      ],
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primaryColor,
+                      ),
+                      child: const Text('Create Event'),
                     ),
                   ],
                 ),
               ),
-            ),
+            ],
           ),
         ),
       ),
     );
   }
+
 }
 

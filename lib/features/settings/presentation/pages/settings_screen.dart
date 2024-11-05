@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
 import 'package:tickoyakovendors/core/commons/bg-widget.dart';
 import 'package:tickoyakovendors/core/strings.dart';
+import 'package:tickoyakovendors/core/theme/theme_toggle_switch.dart';
 import 'package:tickoyakovendors/features/home_screen/presentation/widgets/custom_drawer_widget.dart';
+import 'package:tickoyakovendors/features/settings/presentation/widgets/settings_options_widget.dart';
 
-class AnalyticsScreen extends StatefulWidget {
-  const AnalyticsScreen({super.key});
+class SettingsScreen extends StatefulWidget {
+  const SettingsScreen({super.key});
 
   @override
-  State<AnalyticsScreen> createState() => _AnalyticsScreenState();
+  State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
-class _AnalyticsScreenState extends State<AnalyticsScreen> {
+class _SettingsScreenState extends State<SettingsScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -36,13 +38,10 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                   children: [
                     ShaderMask(
                       shaderCallback: (bounds) => const LinearGradient(
-                        colors: [
-                          AppColors.accentColor,
-                          Colors.white,
-                        ],
+                        colors: [AppColors.accentColor, Colors.white],
                       ).createShader(bounds),
                       child: const Text(
-                        analytics,
+                        settings,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -105,25 +104,41 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                 },
               ),
             ),
-            // Add your main content here using other Sliver widgets
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                 
                   children: [
-                    SizedBox(height: 300,),
-                    Center(
-                      child: Text(
-                        'nothings to show yet...',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
+                    Material(
+                 
+                       borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                            decoration: BoxDecoration(
+                          color: AppColors.backgroundDark.withOpacity(.1),
+                          border: Border.all(
+                              color: AppColors.backgroundDark.withOpacity(.2)),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                'Toggle Dark Mode:',
+                                style: TextStyle(fontSize: 18),
+                              ),
+                              ThemeToggle(),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
+                    SettingsOptionsWidget(),
+                    const SizedBox(height: 16),
+                     SettingsOptionsWidget(),
                   ],
                 ),
               ),

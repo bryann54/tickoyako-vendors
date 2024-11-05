@@ -6,11 +6,14 @@ import 'package:tickoyakovendors/core/strings.dart';
 import 'package:tickoyakovendors/features/home_screen/presentation/widgets/custom_drawer_widget.dart';
 
 class TicketScanningScreen extends StatefulWidget {
-  const TicketScanningScreen({super.key});
+  final bool fromDrawer;
+
+  const TicketScanningScreen({super.key, this.fromDrawer = false});
 
   @override
   State<TicketScanningScreen> createState() => _TicketScanningScreenState();
 }
+
 
 class _TicketScanningScreenState extends State<TicketScanningScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -48,7 +51,7 @@ class _TicketScanningScreenState extends State<TicketScanningScreen> {
       body: AnimatedBackgroundWidget(
         child: CustomScrollView(
           slivers: [
-            SliverAppBar(
+         SliverAppBar(
               expandedHeight: 120.0,
               floating: false,
               pinned: true,
@@ -120,20 +123,26 @@ class _TicketScanningScreenState extends State<TicketScanningScreen> {
                   ),
                 ),
               ),
-            leading: IconButton(
-                icon: const Icon(
-                  Icons.arrow_back_ios_new, // Change to back arrow icon
-                  color: Colors.white,
-                  size: 35,
+              leading: widget.fromDrawer
+                  ? IconButton(
+                      icon: const Icon(
+                        Icons.menu,
+                        color: Colors.white,
+                        size: 35,
+                      ),
+                      onPressed: () {
+                        _scaffoldKey.currentState?.openDrawer();
+                      },
+                    )
+                  : IconButton(
+                icon: const CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Icon(Icons.arrow_back, color: AppColors.primaryColor),
                 ),
-                onPressed: () {
-                  Navigator.of(context)
-                      .pop(); // Pop the current screen from the stack
-                },
+                onPressed: () => Navigator.pop(context),
               ),
-
             ),
-            // Main content with QR scanner overlay
+
             SliverToBoxAdapter(
               child: Column(
                 children: [

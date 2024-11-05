@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade300,
+  
       key: _scaffoldKey,
       drawer: const CustomDrawer(),
       body: AnimatedBackgroundWidget(
@@ -118,11 +118,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 16),
+                 
                     BlocBuilder<EventsBloc, EventsState>(
                       builder: (context, state) {
                         if (state is EventsLoading) {

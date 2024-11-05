@@ -19,14 +19,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Colors.grey.shade200,
+
       key: _scaffoldKey,
       drawer: const CustomDrawer(),
       body: AnimatedBackgroundWidget(
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              expandedHeight: 200.0,
+              expandedHeight: 200,
               floating: false,
               pinned: true,
               stretch: true,
@@ -57,40 +57,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ],
                     ),
                   ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 40,
-                            backgroundColor: Colors.white,
-                            backgroundImage: AssetImage('assets/profile_placeholder.png'),
-                          ),
-                          SizedBox(width: 16),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "John Doe",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
+                  child: Padding(
+                    padding: const EdgeInsets.all(60.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                               Container(
+                              padding: const EdgeInsets.all(3),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Colors.white,
+                                  width: 2,
+                                ),
+                              ),
+                              child: const CircleAvatar(
+                                radius: 40,
+                                backgroundColor: Colors.white24,
+                                child: Icon(
+                                  Icons.person,
+                                  size: 40,
                                   color: Colors.white,
                                 ),
                               ),
-                              Text(
-                                "john.doe@example.com",
-                                style: TextStyle(color: Colors.white70),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 16),
-                    ],
+                            ),
+                            const SizedBox(width: 16),
+                            const Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "John Doe",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Text(
+                                  "john.doe@example.com",
+                                  style: TextStyle(color: Colors.white70),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -103,13 +120,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  children: [
+                  children:  [
                     ProfileStatisticsSection(),
                     const SizedBox(height: 24),
                     ProfileOptionsSection(),
                     const SizedBox(height: 200),
-                    const LogOutButton()
-                    
+                    const LogOutButton(),
                   ],
                 ),
               ),

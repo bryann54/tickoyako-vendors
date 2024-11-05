@@ -1,7 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
+import 'package:tickoyakovendors/core/commons/custom_snackbar_widget.dart';
 import 'package:tickoyakovendors/features/events/data/repositories/events_repository.dart';
 import 'package:tickoyakovendors/features/events/presentation/widgets/add_event_dialog_widget.dart';
 
@@ -37,24 +37,24 @@ class CustomFAB extends StatelessWidget {
     if (result != null) {
       try {
         await repository.addEvent(result);
-        // Show success message
+        // Show success message with CustomAnimatedSnackbar
         if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Event created successfully!'),
-              backgroundColor: Colors.green,
-            ),
+          CustomAnimatedSnackbar.show(
+            context: context,
+            message: 'Event created successfully!',
+            icon: Icons.check_circle,
+            backgroundColor: Colors.green,
           );
         }
         // Refresh the events list
         onPressed();
       } catch (e) {
         if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Failed to create event: ${e.toString()}'),
-              backgroundColor: Colors.red,
-            ),
+          CustomAnimatedSnackbar.show(
+            context: context,
+            message: 'Failed to create event: ${e.toString()}',
+            icon: Icons.error,
+            backgroundColor: Colors.red,
           );
         }
       }

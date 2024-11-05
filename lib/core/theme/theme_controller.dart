@@ -8,13 +8,7 @@ class ThemeController extends ChangeNotifier {
   bool get isDarkMode => _themeMode == ThemeMode.dark;
 
   void toggleTheme() {
-    _themeMode =
-        _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
-    notifyListeners();
-  }
-
-  void setThemeMode(ThemeMode mode) {
-    _themeMode = mode;
+    _themeMode = isDarkMode ? ThemeMode.light : ThemeMode.dark;
     notifyListeners();
   }
 }

@@ -3,8 +3,9 @@ import 'package:tickoyakovendors/core/colors.dart';
 import 'package:tickoyakovendors/core/strings.dart';
 import 'package:tickoyakovendors/features/analytics/presentation/pages/analytics.dart';
 import 'package:tickoyakovendors/features/home_screen/presentation/pages/home_screen.dart';
-import 'package:tickoyakovendors/features/profile/presentation/pages/profile.dart';
-import 'package:tickoyakovendors/features/settings/presentation/pages/settings.dart';
+import 'package:tickoyakovendors/features/profile/presentation/pages/profile_screen.dart';
+import 'package:tickoyakovendors/features/profile/presentation/widgets/logout_button_widget.dart';
+import 'package:tickoyakovendors/features/settings/presentation/pages/settings_screen.dart';
 import 'package:tickoyakovendors/features/ticket_scanning/presentation/pages/ticket_scanning.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -176,9 +177,14 @@ class CustomDrawer extends StatelessWidget {
           icon: Icons.qr_code_scanner_rounded,
           title: qr_scanner,
          onTap: () {
-            // Add logout logic
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => TicketScanningScreen()));
+        Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    const TicketScanningScreen(fromDrawer: true),
+              ),
+            );
+
           },
         ),
         _buildDivider(),
@@ -251,15 +257,7 @@ class CustomDrawer extends StatelessWidget {
       ),
       child: Column(
         children: [
-          _buildDrawerItem(
-            context,
-            icon: Icons.logout_rounded,
-            title: logout,
-            onTap: () {
-              // Add logout logic
-              Navigator.pop(context);
-            },
-          ),
+        LogOutButton(),
           const SizedBox(height: 8),
           Text(
             version_txt,

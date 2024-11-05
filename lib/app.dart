@@ -19,7 +19,7 @@ class App extends StatelessWidget {
             EventsRepository(),
           ),
         ),
-        // Add other BlocProviders here as needed
+      
       ],
       child: ChangeNotifierProvider(
         create: (_) => ThemeController(),
@@ -30,8 +30,8 @@ class App extends StatelessWidget {
               title: 'TickoYako Vendors',
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
-              themeMode: themeController.themeMode,
-              home:  HomeScreen(),
+              themeMode: themeController.themeMode, 
+              home: HomeScreen(),
             );
           },
         ),

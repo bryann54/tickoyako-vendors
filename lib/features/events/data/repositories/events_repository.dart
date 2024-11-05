@@ -22,7 +22,7 @@ class EventsRepository {
 
   // Get all events
   Future<List<EventsModel>> getEvents() async {
-    await Future.delayed(const Duration(seconds: 1)); // Simulate network delay
+    await Future.delayed(const Duration(milliseconds: 500)); // Simulate network delay
     return _events;
   }
 
