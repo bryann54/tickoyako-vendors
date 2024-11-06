@@ -14,12 +14,12 @@ class TicketScanningScreen extends StatefulWidget {
   State<TicketScanningScreen> createState() => _TicketScanningScreenState();
 }
 
-
 class _TicketScanningScreenState extends State<TicketScanningScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey _qrKey = GlobalKey(debugLabel: 'QR');
   QRViewController? _qrController;
   String? scannedResult;
+  bool isScanning = true;
 
   @override
   void reassemble() {
@@ -35,11 +35,13 @@ class _TicketScanningScreenState extends State<TicketScanningScreen> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         scannedResult = scanData.code;
+        isScanning = false;
       });
-      // Pause the camera after scanning for better UX
-      controller.pauseCamera();
-      // Here you can trigger a function to handle the scanned result.
-      // For example, verify ticket information based on the scannedResult.
+      controller.pauseCamera(); // Pause to prevent multiple scans
+    }, onError: (error) {
+      setState(() {
+        scannedResult = 'Error scanning QR code';
+      });
     });
   }
 
@@ -51,7 +53,7 @@ class _TicketScanningScreenState extends State<TicketScanningScreen> {
       body: AnimatedBackgroundWidget(
         child: CustomScrollView(
           slivers: [
-         SliverAppBar(
+            SliverAppBar(
               expandedHeight: 120.0,
               floating: false,
               pinned: true,
@@ -65,10 +67,7 @@ class _TicketScanningScreenState extends State<TicketScanningScreen> {
                   children: [
                     ShaderMask(
                       shaderCallback: (bounds) => const LinearGradient(
-                        colors: [
-                          AppColors.accentColor,
-                          Colors.white,
-                        ],
+                        colors: [AppColors.accentColor, Colors.white],
                       ).createShader(bounds),
                       child: const Text(
                         qr_scanner,
@@ -135,14 +134,14 @@ class _TicketScanningScreenState extends State<TicketScanningScreen> {
                       },
                     )
                   : IconButton(
-                icon: const CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: Icon(Icons.arrow_back, color: AppColors.primaryColor),
-                ),
-                onPressed: () => Navigator.pop(context),
-              ),
+                      icon: const CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: Icon(Icons.arrow_back,
+                            color: AppColors.primaryColor),
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                    ),
             ),
-
             SliverToBoxAdapter(
               child: Column(
                 children: [
@@ -150,7 +149,7 @@ class _TicketScanningScreenState extends State<TicketScanningScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
                       height: 500,
-                      width: 450, 
+                      width: 450,
                       child: QRView(
                         key: _qrKey,
                         onQRViewCreated: _onQRViewCreated,
@@ -164,28 +163,30 @@ class _TicketScanningScreenState extends State<TicketScanningScreen> {
                       ),
                     ),
                   ),
-               
                   if (scannedResult != null)
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Scanned Code: $scannedResult',
-                        style: const TextStyle(fontSize: 16, color: Colors.black),
+                        style:
+                            const TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ),
                   Padding(
                     padding: const EdgeInsets.all(18.0),
                     child: ElevatedButton.icon(
-                      icon: Icon(Icons.qr_code_2_outlined),
+                      icon: const Icon(Icons.qr_code_2_outlined),
                       label: const Text('Scan QR code'),
-                      onPressed: () {
-                        // Restart QR scanning
-                        _qrController?.resumeCamera();
-                        setState(() {
-                          scannedResult = null;
-                        });
-                      },
-                    
+                      onPressed: isScanning
+                          ? null
+                          : () {
+                              // Restart QR scanning
+                              _qrController?.resumeCamera();
+                              setState(() {
+                                scannedResult = null;
+                                isScanning = true;
+                              });
+                            },
                     ),
                   ),
                 ],
