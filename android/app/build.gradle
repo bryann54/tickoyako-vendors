@@ -37,6 +37,10 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+
+    dependencies {
+        implementation project(':qr_code_scanner')
+    }
 }
 
 flutter {

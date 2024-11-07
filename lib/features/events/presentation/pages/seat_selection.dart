@@ -92,7 +92,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                 child: TheaterSeatingLayout(
                   onSeatSelected: _onSeatSelected,
                   selectedSeats: selectedSeats,
-                  bookedSeats: bookedSeats, // Pass booked seats to layout
+                  bookedSeats: bookedSeats, 
                 ),
               ),
               if (selectedSeats.isNotEmpty)
@@ -101,7 +101,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                   child: ElevatedButton(
                     onPressed: _bookSeats,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
+                      backgroundColor: AppColors.primaryColor,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 50,
                         vertical: 15,
