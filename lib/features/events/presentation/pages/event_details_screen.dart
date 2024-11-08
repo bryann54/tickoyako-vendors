@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
 import 'package:tickoyakovendors/core/commons/bg-widget.dart';
@@ -31,15 +32,22 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
               flexibleSpace: FlexibleSpaceBar(
                 background: Hero(
                   tag: 'event-image-${widget.event.id}',
-                  child: Image.network(
-                    widget.event.imgUrl,
+                  child: CachedNetworkImage(
+                    imageUrl: widget.event.imgUrl,
+                    height: 200,
+                    width: double.infinity,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Icon(
-                        Icons.error,
-                        size: 40,
-                      );
-                    },
+                    placeholder: (context, url) => Container(
+                      height: 200,
+                      color: Colors.grey[200],
+                      child: const Center(
+                          child: CircularProgressIndicator.adaptive()),
+                    ),
+                    errorWidget: (context, url, error) => Container(
+                      height: 200,
+                      color: Colors.grey[300],
+                      child: const Center(child: Icon(Icons.error)),
+                    ),
                   ),
                 ),
               ),

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -291,30 +292,23 @@ Widget _buildEventsList(Map<String, dynamic> data) {
                           bottomRight: Radius.circular(12 + 10 * (index % 2)),
                         ),
                       ),
-                      child: Image.network(
-                        event['image'] ?? '',
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return Container(
-                            color: Colors.grey.shade200,
-                            child: const Icon(
-                              Icons.image_not_supported,
-                              color: Colors.grey,
-                            ),
-                          );
-                        },
-                        loadingBuilder: (context, child, loadingProgress) {
-                          if (loadingProgress == null) return child;
-                          return Center(
-                            child: CircularProgressIndicator(
-                              value: loadingProgress.expectedTotalBytes != null
-                                  ? loadingProgress.cumulativeBytesLoaded /
-                                      loadingProgress.expectedTotalBytes!
-                                  : null,
-                            ),
-                          );
-                        },
-                      ),
+                      child: CachedNetworkImage(
+                          imageUrl: event['image'] ?? '',
+                          height: 200,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) => Container(
+                            height: 200,
+                            color: Colors.grey[200],
+                            child: const Center(
+                                child: CircularProgressIndicator.adaptive()),
+                          ),
+                          errorWidget: (context, url, error) => Container(
+                            height: 200,
+                            color: Colors.grey[300],
+                            child: const Center(child: Icon(Icons.error)),
+                          ),
+                        )
                     ),
                   ),
 
