@@ -39,8 +39,9 @@ class _SignUpTabState extends State<SignUpTab> {
               controller: _nameController,
               decoration: InputDecoration(
                 labelText: fullname,
-                 labelStyle:  const TextStyle(color: AppColors.primaryColor),
-                prefixIcon: const Icon(Icons.person_outline,color: AppColors.primaryColor,),
+                labelStyle: TextStyle(color: Colors.grey[600]),
+                prefixIcon:  Icon(Icons.person_outline,
+                    color: AppColors.primaryColorDark.withOpacity(.9)),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -57,10 +58,10 @@ class _SignUpTabState extends State<SignUpTab> {
               controller: _emailController,
               decoration: InputDecoration(
                 labelText: email,
-                 labelStyle:  const TextStyle(color: AppColors.primaryColor),
-                prefixIcon: const Icon(Icons.email_outlined,
-                  color: AppColors.primaryColor,
-                ),
+                labelStyle: TextStyle(color: Colors.grey[600]),
+                prefixIcon:  Icon(Icons.email_outlined,
+                 color: AppColors.primaryColorDark.withOpacity(.9)),
+                
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -78,10 +79,9 @@ class _SignUpTabState extends State<SignUpTab> {
               obscureText: _obscurePassword,
               decoration: InputDecoration(
                 labelText: password,
-                labelStyle:  const TextStyle(color: AppColors.primaryColor),
-                prefixIcon: const Icon(Icons.lock_outline,
-                  color: AppColors.primaryColor,
-                ),
+                labelStyle: TextStyle(color: Colors.grey[600]),
+                prefixIcon:  Icon(Icons.lock_outline,
+                     color: AppColors.primaryColorDark.withOpacity(.9)),
                 suffixIcon: IconButton(
                   icon: Icon(_obscurePassword
                       ? Icons.visibility_outlined

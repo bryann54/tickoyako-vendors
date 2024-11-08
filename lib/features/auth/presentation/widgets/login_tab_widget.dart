@@ -38,11 +38,11 @@ class _LoginTabState extends State<LoginTab> {
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 labelText: email,
-                labelStyle: const TextStyle(color: AppColors.primaryColor),
+                labelStyle:  TextStyle(color: Colors.grey[600]),
                 hintText: email_hint,
                 hintStyle: const TextStyle(fontSize: 14, color: Colors.grey),
-                prefixIcon: const Icon(Icons.email_outlined,
-                    color: AppColors.primaryColor),
+                prefixIcon:  Icon(Icons.email_outlined,
+                    color: AppColors.primaryColorDark.withOpacity(.9)),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -63,10 +63,10 @@ class _LoginTabState extends State<LoginTab> {
                 hintText: password_hint,
                 labelStyle: const TextStyle(color: AppColors.primaryColor),
                 hintStyle: const TextStyle(fontSize: 14, color: Colors.grey),
-                prefixIcon: const Icon(
+                prefixIcon:  Icon(
                   Icons.lock_outline,
-                  color: AppColors.primaryColor,
-                ),
+                color: AppColors.primaryColorDark.withOpacity(.9)),
+                
                 suffixIcon: IconButton(
                   icon: Icon(
                     _obscurePassword

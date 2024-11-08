@@ -65,7 +65,7 @@ class _AuthViewState extends State<AuthView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade50,
+     
       body: AnimatedBackgroundWidget(
         child: BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
@@ -160,7 +160,7 @@ class _AuthViewState extends State<AuthView>
                   margin: const EdgeInsets.symmetric(horizontal: 24),
                   height: 60,
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: AppColors.textSecondary.withOpacity(.1),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: TabBar(
@@ -179,8 +179,8 @@ class _AuthViewState extends State<AuthView>
                       ],
                     ),
                     indicatorColor: Colors.transparent,
-                    labelColor: Colors.white,
-                    unselectedLabelColor: Colors.grey[800],
+                    labelColor: AppColors.background,
+                    unselectedLabelColor: Colors.grey[500],
                     labelStyle: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
