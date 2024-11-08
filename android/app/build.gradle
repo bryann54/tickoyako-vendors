@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.tickoyakovendors"
+    namespace = "com.example.tickoyakovendors"  // Keep only this namespace
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -36,6 +36,10 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.debug
         }
+    }
+
+    dependencies {
+        implementation project(':qr_code_scanner')
     }
 }
 

@@ -1,0 +1,27 @@
+plugins {
+    id "com.android.library"
+    id "org.jetbrains.kotlin.android"
+}
+
+android {
+    namespace "net.touchcapture.qr.flutterqr"
+    compileSdk = 33  // Use the same as your app's compileSdkVersion
+
+    defaultConfig {
+        minSdk = 21  // Use the same as your app's minSdkVersion
+        targetSdk = 33  // Use the same as your app's targetSdkVersion
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22"
+}
