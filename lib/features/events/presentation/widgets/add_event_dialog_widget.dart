@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
 import 'package:tickoyakovendors/core/commons/bg-widget.dart';
@@ -19,7 +18,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
   final _priceController = TextEditingController();
   final _contactController = TextEditingController();
   final _eventOwnerController = TextEditingController();
-  
+
   DateTime _selectedDate = DateTime.now();
   String _selectedType = 'Concert'; // Default value
 
@@ -60,7 +59,6 @@ class _AddEventDialogState extends State<AddEventDialog> {
 
   InputDecoration _getInputDecoration(String label) {
     return InputDecoration(
-    
       labelText: label,
       labelStyle: const TextStyle(color: Colors.black87),
       border: const OutlineInputBorder(),
@@ -75,7 +73,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
     );
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Dialog(
       insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
@@ -97,14 +95,15 @@ class _AddEventDialogState extends State<AddEventDialog> {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(mainAxisAlignment: MainAxisAlignment.center,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ShaderMask(
                                 shaderCallback: (bounds) =>
                                     const LinearGradient(
                                   colors: [AppColors.accentColor, Colors.white],
                                 ).createShader(bounds),
-                                child:  Text(
+                                child: Text(
                                   "Create event".toUpperCase(),
                                   style: TextStyle(
                                     fontSize: 25,
@@ -171,7 +170,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                           const SizedBox(height: 12),
                           Container(
                             decoration: BoxDecoration(
-                              color:Colors.grey.withOpacity(0.4),
+                              color: Colors.grey.withOpacity(0.4),
                               borderRadius: BorderRadius.circular(14),
                               border: Border.all(color: Colors.grey.shade400),
                             ),
@@ -232,9 +231,15 @@ class _AddEventDialogState extends State<AddEventDialog> {
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(),
                       style: TextButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         backgroundColor: Colors.grey.withOpacity(0.4),
                       ),
-                      child: const Text('Cancel',style: TextStyle(color:AppColors.error),),
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(color: AppColors.error),
+                      ),
                     ),
                     const SizedBox(width: 16),
                     ElevatedButton(
@@ -268,6 +273,4 @@ class _AddEventDialogState extends State<AddEventDialog> {
       ),
     );
   }
-
 }
-

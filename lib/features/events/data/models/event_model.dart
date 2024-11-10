@@ -11,7 +11,7 @@ class EventsModel {
   final String title;
   final String description;
   final DateTime date;
-  final int price;  
+  final int price;
   final String eventOwner;
   final String contact;
 

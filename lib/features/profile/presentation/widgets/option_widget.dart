@@ -5,7 +5,7 @@ class ProfileOptionsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-       borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(20),
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.backgroundDark.withOpacity(.1),
@@ -19,12 +19,12 @@ class ProfileOptionsSection extends StatelessWidget {
               title: "Edit name",
               onTap: () {},
             ),
-           Padding(
-             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-             child: Divider(
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Divider(
                 color: AppColors.dividerColorDark.withOpacity(.3),
               ),
-           ),
+            ),
             ProfileOptionItem(
               icon: Icons.phone_android_rounded,
               title: "Edit number",
@@ -38,7 +38,7 @@ class ProfileOptionsSection extends StatelessWidget {
             ),
             ProfileOptionItem(
               icon: Icons.edit_attributes,
-              title:"Edit Image",
+              title: "Edit Image",
               onTap: () {},
             ),
           ],

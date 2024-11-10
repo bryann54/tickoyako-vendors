@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
 import 'package:tickoyakovendors/features/events/data/models/event_model.dart';
 import 'package:tickoyakovendors/features/events/presentation/pages/event_details_screen.dart';
+
 class EventCardWidget extends StatelessWidget {
   final EventsModel event;
 
@@ -36,12 +38,18 @@ class EventCardWidget extends StatelessWidget {
               child: ClipRRect(
                 borderRadius:
                     const BorderRadius.vertical(top: Radius.circular(12)),
-                child: Image.network(
-                  event.imgUrl,
+                child: CachedNetworkImage(
+                  imageUrl: event.imgUrl,
                   height: 200,
                   width: double.infinity,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => Container(
+                  placeholder: (context, url) => Container(
+                    height: 200,
+                    color: Colors.grey[200],
+                    child: const Center(
+                        child: CircularProgressIndicator.adaptive()),
+                  ),
+                  errorWidget: (context, url, error) => Container(
                     height: 200,
                     color: Colors.grey[300],
                     child: const Center(child: Icon(Icons.error)),

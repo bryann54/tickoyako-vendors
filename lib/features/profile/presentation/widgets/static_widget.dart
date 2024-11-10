@@ -17,7 +17,7 @@ class ProfileStatisticsSection extends StatelessWidget {
               label: "Scanned Tickets",
               count: "123",
             ),
-             Container(
+            Container(
               height: 80,
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: VerticalDivider(
@@ -30,7 +30,7 @@ class ProfileStatisticsSection extends StatelessWidget {
               label: "Events Attended",
               count: "5",
             ),
-             Container(
+            Container(
               height: 80,
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: VerticalDivider(

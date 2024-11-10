@@ -15,4 +15,3 @@ class EventsError extends EventsState {
   final String message;
   EventsError(this.message);
 }
-

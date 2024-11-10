@@ -19,7 +19,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       key: _scaffoldKey,
       drawer: const CustomDrawer(),
       body: AnimatedBackgroundWidget(
@@ -31,7 +30,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               pinned: true,
               stretch: true,
               flexibleSpace: FlexibleSpaceBar(
-                titlePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                titlePadding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 title: ShaderMask(
                   shaderCallback: (bounds) => const LinearGradient(
                     colors: [AppColors.accentColor, Colors.white],
@@ -65,7 +65,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                               Container(
+                            Container(
                               padding: const EdgeInsets.all(3),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
@@ -85,30 +85,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             const SizedBox(width: 16),
-                             Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                              const Text(
-              'alfred bryann',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          
-          const SizedBox(height: 4),
-          Text(
-          'nduko@gmail.com',
-            style: TextStyle(
-              color: Colors.white.withOpacity(0.8),
-              fontSize: 14,
-            ),
-          ),
-
-                              ]
-                            ),
+                            Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'alfred bryann',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    'nduko@gmail.com',
+                                    style: TextStyle(
+                                      color: Colors.white.withOpacity(0.8),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ]),
                           ],
                         ),
                       ],
@@ -121,12 +118,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onPressed: () => _scaffoldKey.currentState?.openDrawer(),
               ),
             ),
-            
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  children:  [
+                  children: [
                     ProfileStatisticsSection(),
                     const SizedBox(height: 24),
                     ProfileOptionsSection(),
@@ -142,4 +138,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
-

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/features/auth/presentation/widgets/splash_bg_widget.dart';
+
 class AnimatedBackgroundWidget extends StatefulWidget {
   final Widget child;
 

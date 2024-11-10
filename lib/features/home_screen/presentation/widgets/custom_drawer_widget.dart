@@ -43,7 +43,7 @@ class CustomDrawer extends StatelessWidget {
                   ),
                 ),
               ),
-                Positioned(
+              Positioned(
                 top: 200,
                 right: 20,
                 child: Container(
@@ -97,23 +97,20 @@ class CustomDrawer extends StatelessWidget {
                 width: 2,
               ),
             ),
-           child: CircleAvatar(
-              radius: 80, 
+            child: CircleAvatar(
+              radius: 80,
               backgroundImage: const CachedNetworkImageProvider(
                 'https://picsum.photos/200/300',
               ),
-              backgroundColor:
-                  Colors.grey,
+              backgroundColor: Colors.grey,
               onBackgroundImageError: (error, stackTrace) {
-                
-                 const Icon(
+                const Icon(
                   Icons.person,
                   size: 40,
                   color: Colors.white,
                 );
               },
             ),
-
           ),
           const SizedBox(height: 12),
           ShaderMask(
@@ -134,7 +131,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-          'nduko@gmail.com',
+            'nduko@gmail.com',
             style: TextStyle(
               color: Colors.white.withOpacity(0.8),
               fontSize: 14,
@@ -163,10 +160,10 @@ class CustomDrawer extends StatelessWidget {
           context,
           icon: Icons.person_outline_rounded,
           title: profile,
-         onTap: () {
+          onTap: () {
             // Add logout logic
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const ProfileScreen()));
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (_) => const ProfileScreen()));
           },
         ),
         _buildDivider(),
@@ -174,10 +171,10 @@ class CustomDrawer extends StatelessWidget {
           context,
           icon: Icons.analytics_outlined,
           title: analytics,
-         onTap: () {
+          onTap: () {
             // Add logout logic
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const AnalyticsScreen()));
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (_) => const AnalyticsScreen()));
           },
         ),
         _buildDivider(),
@@ -185,15 +182,14 @@ class CustomDrawer extends StatelessWidget {
           context,
           icon: Icons.qr_code_scanner_rounded,
           title: qr_scanner,
-         onTap: () {
-        Navigator.pushReplacement(
+          onTap: () {
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) =>
                     const TicketScanningScreen(fromDrawer: true),
               ),
             );
-
           },
         ),
         _buildDivider(),
@@ -203,8 +199,8 @@ class CustomDrawer extends StatelessWidget {
           title: settings,
           onTap: () {
             // Add logout logic
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const SettingsScreen()));
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (_) => const SettingsScreen()));
           },
         ),
       ],
@@ -266,7 +262,7 @@ class CustomDrawer extends StatelessWidget {
       ),
       child: Column(
         children: [
-        const LogOutButton(),
+          const LogOutButton(),
           const SizedBox(height: 8),
           Text(
             version_txt,

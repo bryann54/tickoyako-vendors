@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tickoyakovendors/core/colors.dart';
 import 'package:tickoyakovendors/core/strings.dart';
 import 'package:tickoyakovendors/features/home_screen/presentation/pages/home_screen.dart';
+
 class LoginTab extends StatefulWidget {
   const LoginTab({Key? key}) : super(key: key);
 
@@ -38,10 +39,10 @@ class _LoginTabState extends State<LoginTab> {
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 labelText: email,
-                labelStyle:  TextStyle(color: Colors.grey[600]),
+                labelStyle: TextStyle(color: Colors.grey[600]),
                 hintText: email_hint,
                 hintStyle: const TextStyle(fontSize: 14, color: Colors.grey),
-                prefixIcon:  Icon(Icons.email_outlined,
+                prefixIcon: Icon(Icons.email_outlined,
                     color: AppColors.primaryColorDark.withOpacity(.9)),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -63,10 +64,8 @@ class _LoginTabState extends State<LoginTab> {
                 hintText: password_hint,
                 labelStyle: const TextStyle(color: AppColors.primaryColor),
                 hintStyle: const TextStyle(fontSize: 14, color: Colors.grey),
-                prefixIcon:  Icon(
-                  Icons.lock_outline,
-                color: AppColors.primaryColorDark.withOpacity(.9)),
-                
+                prefixIcon: Icon(Icons.lock_outline,
+                    color: AppColors.primaryColorDark.withOpacity(.9)),
                 suffixIcon: IconButton(
                   icon: Icon(
                     _obscurePassword
@@ -129,7 +128,7 @@ class _LoginTabState extends State<LoginTab> {
                                 PageRouteBuilder(
                                   pageBuilder: (context, animation,
                                           secondaryAnimation) =>
-                                       HomeScreen(), 
+                                      HomeScreen(),
                                   transitionsBuilder: (context, animation,
                                       secondaryAnimation, child) {
                                     return FadeTransition(
