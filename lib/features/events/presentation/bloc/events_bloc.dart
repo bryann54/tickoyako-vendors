@@ -20,4 +20,3 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     });
   }
 }
-

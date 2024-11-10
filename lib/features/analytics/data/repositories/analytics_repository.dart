@@ -13,11 +13,12 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
       'activeEvents': 8,
       'recentEvents': [
         {
-      'image':'https://img.freepik.com/free-vector/abstract-music-festival-poster-template_23-2148233165.jpg?semt=ais_hybrid',
-  'name': 'Summer Music Festival',
-  'date': '2023-08-15',
-  'revenue': 5000,
-  'status': 'active' 
+          'image':
+              'https://img.freepik.com/free-vector/abstract-music-festival-poster-template_23-2148233165.jpg?semt=ais_hybrid',
+          'name': 'Summer Music Festival',
+          'date': '2023-08-15',
+          'revenue': 5000,
+          'status': 'active'
         },
         //   {
         //   'image':
@@ -43,7 +44,6 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
         //   'revenue': 5000,
         //   'status': 'canceled'
         // },
-      
       ],
     };
   }

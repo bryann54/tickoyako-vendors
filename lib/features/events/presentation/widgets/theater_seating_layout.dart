@@ -107,8 +107,7 @@ class _TheaterSeatingLayoutState extends State<TheaterSeatingLayout>
     );
   }
 
-
-@override
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
@@ -192,7 +191,7 @@ class _TheaterSeatingLayoutState extends State<TheaterSeatingLayout>
                             height: 20,
                             width: 20,
                             decoration: BoxDecoration(
-                              color:AppColors.primaryColor,
+                              color: AppColors.primaryColor,
                               borderRadius: BorderRadius.circular(5),
                             ),
                           ),
@@ -228,7 +227,6 @@ class _TheaterSeatingLayoutState extends State<TheaterSeatingLayout>
       ),
     );
   }
-
 
   Widget buildHeader(String text) {
     return Container(

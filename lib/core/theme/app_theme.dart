@@ -138,7 +138,7 @@ class AppTheme {
       foregroundColor: AppColors.textPrimaryDark,
       elevation: 0,
       centerTitle: true,
-      titleTextStyle:  TextStyle(
+      titleTextStyle: TextStyle(
         color: AppColors.textPrimaryDark,
         fontSize: 20,
         fontWeight: FontWeight.w600,

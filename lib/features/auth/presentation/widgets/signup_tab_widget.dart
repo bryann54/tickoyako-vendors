@@ -4,6 +4,7 @@ import 'package:tickoyakovendors/core/colors.dart';
 import 'package:tickoyakovendors/core/strings.dart';
 import 'package:tickoyakovendors/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:tickoyakovendors/features/auth/presentation/bloc/auth_event.dart';
+
 class SignUpTab extends StatefulWidget {
   const SignUpTab({Key? key}) : super(key: key);
 
@@ -17,7 +18,7 @@ class _SignUpTabState extends State<SignUpTab> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscurePassword = true;
-    bool isChecked = false;
+  bool isChecked = false;
 
   @override
   void dispose() {
@@ -40,7 +41,7 @@ class _SignUpTabState extends State<SignUpTab> {
               decoration: InputDecoration(
                 labelText: fullname,
                 labelStyle: TextStyle(color: Colors.grey[600]),
-                prefixIcon:  Icon(Icons.person_outline,
+                prefixIcon: Icon(Icons.person_outline,
                     color: AppColors.primaryColorDark.withOpacity(.9)),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -59,9 +60,8 @@ class _SignUpTabState extends State<SignUpTab> {
               decoration: InputDecoration(
                 labelText: email,
                 labelStyle: TextStyle(color: Colors.grey[600]),
-                prefixIcon:  Icon(Icons.email_outlined,
-                 color: AppColors.primaryColorDark.withOpacity(.9)),
-                
+                prefixIcon: Icon(Icons.email_outlined,
+                    color: AppColors.primaryColorDark.withOpacity(.9)),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -80,8 +80,8 @@ class _SignUpTabState extends State<SignUpTab> {
               decoration: InputDecoration(
                 labelText: password,
                 labelStyle: TextStyle(color: Colors.grey[600]),
-                prefixIcon:  Icon(Icons.lock_outline,
-                     color: AppColors.primaryColorDark.withOpacity(.9)),
+                prefixIcon: Icon(Icons.lock_outline,
+                    color: AppColors.primaryColorDark.withOpacity(.9)),
                 suffixIcon: IconButton(
                   icon: Icon(_obscurePassword
                       ? Icons.visibility_outlined
@@ -106,7 +106,7 @@ class _SignUpTabState extends State<SignUpTab> {
             const SizedBox(height: 24),
             Material(
               elevation: 4,
-                borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(12),
               child: SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -137,17 +137,19 @@ class _SignUpTabState extends State<SignUpTab> {
                               width: 24,
                               child: CircularProgressIndicator.adaptive(),
                             )
-                          : const Text(signup,
-                          style: TextStyle(
-              fontSize: 16,
+                          : const Text(
+                              signup,
+                              style: TextStyle(
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                          ),),
+                              ),
+                            ),
                     );
                   },
                 ),
               ),
             ),
-                 const SizedBox(height: 24),
+            const SizedBox(height: 24),
             Container(
               padding:
                   const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10.0),
@@ -214,7 +216,7 @@ class _SignUpTabState extends State<SignUpTab> {
                 ),
               ],
             ),
-                 const SizedBox(height: 94),
+            const SizedBox(height: 94),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
@@ -293,15 +295,13 @@ class _SignUpTabState extends State<SignUpTab> {
                 ],
               ),
             ),
-       
-           
           ],
         ),
       ),
     );
   }
 
- Widget _buildSocialButton({
+  Widget _buildSocialButton({
     required String imagePath, // Change to String for image asset path
     required VoidCallback onPressed,
   }) {
@@ -326,5 +326,4 @@ class _SignUpTabState extends State<SignUpTab> {
       ),
     );
   }
-
 }

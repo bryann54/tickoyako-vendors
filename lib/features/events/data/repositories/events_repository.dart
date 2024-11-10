@@ -17,12 +17,12 @@ class EventsRepository {
           'Like The Conjuring, Annabelle is based on one of the famous cases taken on by paranormal investigators Ed and Lorraine Warren',
       date: DateTime.now().add(const Duration(days: 7)),
     ),
-   
   ];
 
   // Get all events
   Future<List<EventsModel>> getEvents() async {
-    await Future.delayed(const Duration(milliseconds: 500)); // Simulate network delay
+    await Future.delayed(
+        const Duration(milliseconds: 500)); // Simulate network delay
     return _events;
   }
 

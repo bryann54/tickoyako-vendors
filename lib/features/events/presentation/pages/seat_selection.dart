@@ -11,7 +11,7 @@ class SeatSelectionScreen extends StatefulWidget {
   const SeatSelectionScreen({Key? key, required this.event}) : super(key: key);
 
   @override
-  _SeatSelectionScreenState createState() => _SeatSelectionScreenState();
+  State<SeatSelectionScreen> createState() => _SeatSelectionScreenState();
 }
 
 class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
@@ -92,7 +92,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                 child: TheaterSeatingLayout(
                   onSeatSelected: _onSeatSelected,
                   selectedSeats: selectedSeats,
-                  bookedSeats: bookedSeats, 
+                  bookedSeats: bookedSeats,
                 ),
               ),
               if (selectedSeats.isNotEmpty)
@@ -120,4 +120,3 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
     );
   }
 }
-

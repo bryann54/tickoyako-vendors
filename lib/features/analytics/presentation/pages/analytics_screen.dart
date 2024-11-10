@@ -7,6 +7,7 @@ import 'package:tickoyakovendors/core/commons/bg-widget.dart';
 import 'package:tickoyakovendors/core/strings.dart';
 import 'package:tickoyakovendors/features/analytics/presentation/bloc/analytics_bloc.dart';
 import 'package:tickoyakovendors/features/home_screen/presentation/widgets/custom_drawer_widget.dart';
+
 class AnalyticsScreen extends StatefulWidget {
   const AnalyticsScreen({super.key});
 
@@ -44,91 +45,88 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
   }
 
   Widget _buildAppBar() {
-    return
-     SliverAppBar(
-              expandedHeight: 120.0,
-              floating: false,
-              pinned: true,
-              stretch: true,
-              backgroundColor: AppColors.primaryColor,
-              flexibleSpace: FlexibleSpaceBar(
-                titlePadding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ShaderMask(
-                      shaderCallback: (bounds) => const LinearGradient(
-                        colors: [
-                          AppColors.accentColor,
-                          Colors.white,
-                        ],
-                      ).createShader(bounds),
-                      child: const Text(
-                        analytics,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                background: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        AppColors.primaryColor,
-                        AppColors.primaryColor.withOpacity(0.8),
-                        AppColors.secondaryColor,
-                      ],
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: -30,
-                        right: -30,
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white.withOpacity(0.1),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: -20,
-                        left: -20,
-                        child: Container(
-                          width: 80,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white.withOpacity(0.1),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              leading: IconButton(
-                icon: const Icon(
-                  Icons.menu,
+    return SliverAppBar(
+      expandedHeight: 120.0,
+      floating: false,
+      pinned: true,
+      stretch: true,
+      backgroundColor: AppColors.primaryColor,
+      flexibleSpace: FlexibleSpaceBar(
+        titlePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ShaderMask(
+              shaderCallback: (bounds) => const LinearGradient(
+                colors: [
+                  AppColors.accentColor,
+                  Colors.white,
+                ],
+              ).createShader(bounds),
+              child: const Text(
+                analytics,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  size: 35,
                 ),
-                onPressed: () {
-                  _scaffoldKey.currentState?.openDrawer();
-                },
               ),
-            );
-        
+            ),
+          ],
+        ),
+        background: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                AppColors.primaryColor,
+                AppColors.primaryColor.withOpacity(0.8),
+                AppColors.secondaryColor,
+              ],
+            ),
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                top: -30,
+                right: -30,
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white.withOpacity(0.1),
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: -20,
+                left: -20,
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white.withOpacity(0.1),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      leading: IconButton(
+        icon: const Icon(
+          Icons.menu,
+          color: Colors.white,
+          size: 35,
+        ),
+        onPressed: () {
+          _scaffoldKey.currentState?.openDrawer();
+        },
+      ),
+    );
   }
 
   Widget _buildAnalyticsContent(AnalyticsState state) {
@@ -246,13 +244,13 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
     );
   }
 
-Widget _buildEventsList(Map<String, dynamic> data) {
+  Widget _buildEventsList(Map<String, dynamic> data) {
     return Card(
       // elevation: 1,
       // margin: const EdgeInsets.symmetric(vertical: 1, horizontal: 4),
       child: ListView.separated(
-        separatorBuilder: 
-        (context, index) => const Divider(height: 1, thickness: 1),
+        separatorBuilder: (context, index) =>
+            const Divider(height: 1, thickness: 1),
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: (data['recentEvents'] as List?)?.length ?? 0,
@@ -283,16 +281,16 @@ Widget _buildEventsList(Map<String, dynamic> data) {
                     //   bottomLeft: Radius.circular(12),
                     // ),
                     child: Container(
-                      width: 150,
-                      height: 120,
-                      decoration: BoxDecoration(
-                        color: AppColors.cardColorDark.withOpacity(.1),
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(12 + 10 * (index % 2)),
-                          bottomRight: Radius.circular(12 + 10 * (index % 2)),
+                        width: 150,
+                        height: 120,
+                        decoration: BoxDecoration(
+                          color: AppColors.cardColorDark.withOpacity(.1),
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(12 + 10 * (index % 2)),
+                            bottomRight: Radius.circular(12 + 10 * (index % 2)),
+                          ),
                         ),
-                      ),
-                      child: CachedNetworkImage(
+                        child: CachedNetworkImage(
                           imageUrl: event['image'] ?? '',
                           height: 200,
                           width: double.infinity,
@@ -308,8 +306,7 @@ Widget _buildEventsList(Map<String, dynamic> data) {
                             color: Colors.grey[300],
                             child: const Center(child: Icon(Icons.error)),
                           ),
-                        )
-                    ),
+                        )),
                   ),
 
                   // Event Details Container
@@ -324,10 +321,10 @@ Widget _buildEventsList(Map<String, dynamic> data) {
                             decoration: BoxDecoration(
                               color: AppColors.cardColorDark.withOpacity(.1),
                               borderRadius: BorderRadius.only(
-                                topRight: 
-                                Radius.circular(12 + 10 * (index % 2)),
-                                bottomRight: Radius.circular(12 + 10 * (index % 2)),
-                              
+                                topRight:
+                                    Radius.circular(12 + 10 * (index % 2)),
+                                bottomRight:
+                                    Radius.circular(12 + 10 * (index % 2)),
                               ),
                             ),
                             padding: const EdgeInsets.all(5),
@@ -346,7 +343,9 @@ Widget _buildEventsList(Map<String, dynamic> data) {
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                          const Divider(color: AppColors.dividerColor,),
+                                const Divider(
+                                  color: AppColors.dividerColor,
+                                ),
                                 Row(
                                   children: [
                                     Icon(
@@ -364,13 +363,14 @@ Widget _buildEventsList(Map<String, dynamic> data) {
                                     ),
                                   ],
                                 ),
-                          const Divider(
+                                const Divider(
                                   color: AppColors.dividerColor,
                                 ),
-                          
+
                                 // Revenue
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
                                       padding: const EdgeInsets.symmetric(
@@ -378,8 +378,8 @@ Widget _buildEventsList(Map<String, dynamic> data) {
                                         vertical: 4,
                                       ),
                                       decoration: BoxDecoration(
-                                        color:
-                                            AppColors.primaryColor.withOpacity(0.1),
+                                        color: AppColors.primaryColor
+                                            .withOpacity(0.1),
                                         borderRadius: BorderRadius.circular(12),
                                       ),
                                       child: Row(
@@ -401,7 +401,7 @@ Widget _buildEventsList(Map<String, dynamic> data) {
                                         ],
                                       ),
                                     ),
-                          
+
                                     // Status Indicator
                                     Container(
                                       padding: const EdgeInsets.symmetric(
@@ -418,7 +418,8 @@ Widget _buildEventsList(Map<String, dynamic> data) {
                                         style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.bold,
-                                          color: _getStatusColor(event['status']),
+                                          color:
+                                              _getStatusColor(event['status']),
                                         ),
                                       ),
                                     ),
@@ -455,6 +456,7 @@ Widget _buildEventsList(Map<String, dynamic> data) {
         return Colors.grey;
     }
   }
+
   Widget _buildErrorWidget(String message) {
     return Center(
       child: Column(

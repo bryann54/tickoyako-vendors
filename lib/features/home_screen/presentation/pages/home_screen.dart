@@ -11,15 +11,14 @@ import 'package:tickoyakovendors/features/events/presentation/widgets/custom_fab
 import 'package:tickoyakovendors/features/home_screen/presentation/widgets/custom_drawer_widget.dart';
 
 class HomeScreen extends StatefulWidget {
-  
-   HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-   final _eventsRepository = EventsRepository();
+  final _eventsRepository = EventsRepository();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -31,7 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-  
       key: _scaffoldKey,
       drawer: const CustomDrawer(),
       body: AnimatedBackgroundWidget(
@@ -122,7 +120,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                 
                     BlocBuilder<EventsBloc, EventsState>(
                       builder: (context, state) {
                         if (state is EventsLoading) {
@@ -179,18 +176,17 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: CustomFAB(
-        repository: _eventsRepository,
-    onPressed: () async {
-        final result = await showDialog<Map<String, dynamic>>(
-          context: context,
-          builder: (BuildContext context) => const AddEventDialog(),
-        );
+          repository: _eventsRepository,
+          onPressed: () async {
+            final result = await showDialog<Map<String, dynamic>>(
+              context: context,
+              builder: (BuildContext context) => const AddEventDialog(),
+            );
 
-        if (result != null) {
-          // Use the event object
-        }
-      }
-      ),
+            if (result != null) {
+              // Use the event object
+            }
+          }),
     );
   }
 }

@@ -111,10 +111,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Material(
-                 
-                       borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(20),
                       child: Container(
-                            decoration: BoxDecoration(
+                        decoration: BoxDecoration(
                           color: AppColors.backgroundDark.withOpacity(.1),
                           border: Border.all(
                               color: AppColors.backgroundDark.withOpacity(.2)),
@@ -138,7 +137,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     const SizedBox(height: 16),
                     SettingsOptionsWidget(),
                     const SizedBox(height: 16),
-                     SettingsOptionsWidget(),
+                    SettingsOptionsWidget(),
                   ],
                 ),
               ),

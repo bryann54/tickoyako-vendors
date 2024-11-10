@@ -65,7 +65,6 @@ class _AuthViewState extends State<AuthView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: AnimatedBackgroundWidget(
         child: BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
@@ -81,13 +80,14 @@ class _AuthViewState extends State<AuthView>
             child: Column(
               children: [
                 const SizedBox(height: 20),
-               
+
                 AnimatedSwitcher(
                   duration: const Duration(milliseconds: 300),
-                  transitionBuilder: (Widget child, Animation<double> animation) {
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) {
                     return RotationTransition(
-                      turns:
-                          Tween<double>(begin: 0.5, end: 1.0).animate(animation),
+                      turns: Tween<double>(begin: 0.5, end: 1.0)
+                          .animate(animation),
                       child: ScaleTransition(
                         scale: animation,
                         child: FadeTransition(
@@ -116,7 +116,8 @@ class _AuthViewState extends State<AuthView>
                 // Welcome Text with Animation
                 AnimatedSwitcher(
                   duration: const Duration(milliseconds: 300),
-                  transitionBuilder: (Widget child, Animation<double> animation) {
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) {
                     return FadeTransition(
                       opacity: animation,
                       child: SlideTransition(
@@ -133,10 +134,12 @@ class _AuthViewState extends State<AuthView>
                     children: [
                       Text(
                         _welcomeText,
-                        style:
-                            Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                       const SizedBox(height: 8),
                       AnimatedSwitcher(
@@ -145,10 +148,11 @@ class _AuthViewState extends State<AuthView>
                           _descriptionText,
                           key: ValueKey<String>(_descriptionText),
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                color: Colors.grey[600],
-                                height: 1.3,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    color: Colors.grey[600],
+                                    height: 1.3,
+                                  ),
                         ),
                       ),
                     ],
@@ -172,7 +176,8 @@ class _AuthViewState extends State<AuthView>
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: Theme.of(context).primaryColor.withOpacity(0.3),
+                          color:
+                              Theme.of(context).primaryColor.withOpacity(0.3),
                           blurRadius: 8,
                           offset: const Offset(0, 2),
                         ),

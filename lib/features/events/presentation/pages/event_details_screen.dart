@@ -22,7 +22,6 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
- 
       body: AnimatedBackgroundWidget(
         child: CustomScrollView(
           slivers: [
@@ -51,7 +50,6 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                   ),
                 ),
               ),
-
               backgroundColor: AppColors.primaryColor,
               leading: IconButton(
                 icon: const CircleAvatar(
@@ -65,16 +63,17 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
               child: Transform.translate(
                 offset: const Offset(0, -30),
                 child: Container(
-                  decoration:  BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.white.withOpacity(.5),
-                    borderRadius:const BorderRadius.vertical(top: Radius.circular(30)),
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(30)),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                         const SizedBox(
+                        const SizedBox(
                           height: 25,
                         ),
                         Hero(
@@ -84,7 +83,6 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                               
                                 Text(
                                   widget.event.title,
                                   style: const TextStyle(
@@ -115,7 +113,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                             ),
                           ),
                         ),
-                const SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         Container(
                           decoration: BoxDecoration(
                             color: Colors.transparent,
@@ -177,10 +175,11 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                             ],
                           ),
                         ),
-
-                   const SizedBox(height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Container(
-                             decoration: BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Colors.transparent,
                             border: Border.all(
                                 color:
@@ -191,9 +190,9 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
                               children: [
-                              const  Row(
+                                const Row(
                                   children: [
-                                     Text(
+                                    Text(
                                       'Description',
                                       style: TextStyle(
                                         fontSize: 18,
@@ -203,7 +202,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                                     ),
                                   ],
                                 ),
-                                    const SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Text(
                                   widget.event.description,
                                   style: TextStyle(
@@ -217,19 +216,20 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                             ),
                           ),
                         ),
-                          const SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        Row(mainAxisAlignment: MainAxisAlignment.center,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                 MaterialPageRoute(
-                                    builder: (_) =>
-                                        SeatSelectionScreen(event:widget.event
-                                        ,),
+                                  MaterialPageRoute(
+                                    builder: (_) => SeatSelectionScreen(
+                                      event: widget.event,
+                                    ),
                                   ),
                                 );
                               },
@@ -237,16 +237,23 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                                 height: 50,
                                 width: 250,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: AppColors.primaryColor
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: AppColors.primaryColor),
+                                child: const Center(
+                                  child: Text(
+                                    'Seat map',
+                                    style: TextStyle(
+                                      color: AppColors.cardColor,
+                                    ),
+                                  ),
                                 ),
-                                child:const Center(child: Text('Seat map',style: TextStyle(color: AppColors.cardColor,),),),
                               ),
                             ),
                           ],
                         ),
-                       const SizedBox(height: 100,)
-                    
+                        const SizedBox(
+                          height: 100,
+                        )
                       ],
                     ),
                   ),
@@ -258,9 +265,9 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-           // Add logout logic
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (_) =>const TicketScanningScreen()));
+          // Add logout logic
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (_) => const TicketScanningScreen()));
         },
         backgroundColor: AppColors.primaryColor,
         icon: const Icon(Icons.qr_code),
@@ -299,10 +306,10 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                 ),
                 Text(
                   value,
-                  style:  TextStyle(
+                  style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w500,
-                     color: Colors.grey[900],
+                    color: Colors.grey[900],
                   ),
                 ),
               ],

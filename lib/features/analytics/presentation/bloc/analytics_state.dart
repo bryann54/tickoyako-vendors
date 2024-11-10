@@ -1,4 +1,5 @@
 part of 'analytics_bloc.dart';
+
 abstract class AnalyticsState {}
 
 class AnalyticsInitial extends AnalyticsState {}
