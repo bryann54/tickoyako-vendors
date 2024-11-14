@@ -15,4 +15,15 @@ class EventsError extends EventsState {
   final String message;
   EventsError(this.message);
 }
+class MovieRatingLoading extends EventsState {}
+
+class MovieRatingLoaded extends EventsState {
+  final double rating;
+  MovieRatingLoaded(this.rating);
+}
+
+class MovieRatingError extends EventsState {
+  final String message;
+  MovieRatingError(this.message);
+}
 

@@ -8,6 +8,7 @@ import 'package:tickoyakovendors/features/analytics/presentation/bloc/analytics_
 import 'package:tickoyakovendors/features/auth/presentation/pages/splash_screen.dart';
 import 'package:tickoyakovendors/features/events/data/repositories/events_repository.dart';
 import 'package:tickoyakovendors/features/events/presentation/bloc/events_bloc.dart';
+import 'package:tickoyakovendors/features/home_screen/presentation/pages/home_screen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -38,7 +39,7 @@ class App extends StatelessWidget {
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode: themeController.themeMode, 
-              home: SplashScreen(),
+              home: HomeScreen(),
             );
           },
         ),

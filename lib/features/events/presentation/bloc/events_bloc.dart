@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:tickoyakovendors/features/events/data/models/event_model.dart';
-import 'package:tickoyakovendors/features/events/data/repositories/events_repository.dart';
+import '../../data/models/event_model.dart';
+import '../../data/repositories/events_repository.dart';
 
 part 'events_event.dart';
 part 'events_state.dart';
@@ -18,6 +18,15 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
         emit(EventsError(e.toString()));
       }
     });
+
+    on<FetchMovieRating>((event, emit) async {
+      try {
+        emit(MovieRatingLoading());
+        final rating = await repository.getMovieRating(event.movieId);
+        emit(MovieRatingLoaded(rating));
+      } catch (e) {
+        emit(MovieRatingError(e.toString()));
+      }
+    });
   }
 }
-

@@ -11,9 +11,10 @@ class EventsModel {
   final String title;
   final String description;
   final DateTime date;
-  final int price;  
+  final int price;
   final String eventOwner;
   final String contact;
+  final String? movieId; // New field for movie-type events
 
   EventsModel({
     required this.id,
@@ -26,9 +27,11 @@ class EventsModel {
     required this.title,
     required this.description,
     required this.date,
+    this.movieId, // Optional movie ID for movie-type events
   });
 
   factory EventsModel.fromJson(Map<String, dynamic> json) =>
-      _$EventModelFromJson(json);
-  Map<String, dynamic> toJson() => _$EventModelToJson(this);
+      _$EventsModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$EventsModelToJson(this);
 }
